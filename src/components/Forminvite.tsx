@@ -19,6 +19,7 @@ export const FormInvite: React.FC<FormInviteProps> = (props) => {
   const onSubmit = handleSubmit((data) => {
     postData("/api/discord", { data: data.discordId }).then((value) => {
       console.log("value", value);
+      window.open("https://www.yahoo.co.jp/", "_blank");
     });
     console.log(data);
   });
