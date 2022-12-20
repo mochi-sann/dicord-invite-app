@@ -9,7 +9,9 @@
   "scripts": {
     "dev": "next",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "test": "vitest",
+    "coverage": "vitest run --coverage"
   },
   "author": "Iain Collins <me@iaincollins.com>",
   "contributors": [
@@ -18,6 +20,10 @@
     "Lluis Agusti <hi@llu.lu>"
   ],
   "dependencies": {
+    "@chakra-ui/react": "^2.4.4",
+    "@emotion/react": "^11.10.5",
+    "@emotion/styled": "^11.10.5",
+    "framer-motion": "^7.10.2",
     "next": "latest",
     "next-auth": "latest",
     "nodemailer": "^6",
@@ -27,6 +33,7 @@
   "devDependencies": {
     "@types/node": "^17",
     "@types/react": "^18.0.15",
-    "typescript": "^4"
+    "typescript": "^4",
+    "vitest": "^0.26.0"
   }
 }
