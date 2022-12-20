@@ -2,6 +2,7 @@ import { Button, Input } from "@chakra-ui/react";
 import { type } from "os";
 import React from "react";
 import { useForm } from "react-hook-form";
+import { postData } from "../lib/postData";
 
 export type FormInviteProps = {};
 
@@ -16,6 +17,9 @@ export const FormInvite: React.FC<FormInviteProps> = (props) => {
     formState: { errors },
   } = useForm<FormData>();
   const onSubmit = handleSubmit((data) => {
+    postData("/api/discord", { data: data.discordId }).then((value) => {
+      console.log("value", value);
+    });
     console.log(data);
   });
 
