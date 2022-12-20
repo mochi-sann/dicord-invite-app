@@ -1,5 +1,5 @@
 import { useSession } from "next-auth/react";
-import Link from "next/link";
+import { FormInvite } from "../components/Forminvite";
 import Layout from "../components/layout";
 import { VerificationDomain } from "../lib/VerificationDomain";
 
@@ -23,6 +23,7 @@ export default function InviteDiscord() {
   return (
     <Layout>
       <h1>NextAuth.js Example</h1>
+      <FormInvite />
     </Layout>
   );
 }
