@@ -1,6 +1,6 @@
-import Link from "next/link"
-import styles from "./footer.module.css"
-import packageJSON from "../package.json"
+import Link from "next/link";
+import styles from "./footer.module.css";
+import packageJSON from "../../package.json";
 
 export default function Footer() {
   return (
@@ -24,5 +24,5 @@ export default function Footer() {
         </li>
       </ul>
     </footer>
-  )
+  );
 }
