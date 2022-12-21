@@ -2,7 +2,7 @@ import type { NextApiRequest, NextApiResponse } from "next";
 
 import { createBot, Intents, startBot } from "discordeno";
 import { CreateInvite } from "../../lib/CreateInvite";
-type Data = {
+export type Data = {
   url: string;
 };
 // Fake users data

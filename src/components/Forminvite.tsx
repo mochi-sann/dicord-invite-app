@@ -3,6 +3,7 @@ import { type } from "os";
 import React from "react";
 import { useForm } from "react-hook-form";
 import { postData } from "../lib/postData";
+import { Data } from "../pages/api/discord";
 
 export type FormInviteProps = {};
 
@@ -17,9 +18,9 @@ export const FormInvite: React.FC<FormInviteProps> = (props) => {
     formState: { errors },
   } = useForm<FormData>();
   const onSubmit = handleSubmit((data) => {
-    postData("/api/discord", { data: data.discordId }).then((value) => {
+    postData("/api/discord", { data: data.discordId }).then((value: Data) => {
       console.log("value", value);
-      window.open("https://www.yahoo.co.jp/", "_blank");
+      window.open(value.url, "_blank");
     });
     console.log(data);
   });
@@ -29,8 +30,10 @@ export const FormInvite: React.FC<FormInviteProps> = (props) => {
   return (
     <div>
       <form onSubmit={onSubmit}>
-        <Input id="discordID" {...register("discordId")} />
-        <Button type="submit"> Submit</Button>
+        {/* <Input id="discordID" {...register("discordId")} /> */}
+        <Button type="submit" w="full">
+          join Discord{" "}
+        </Button>
       </form>
     </div>
   );
