@@ -1,5 +1,5 @@
 import { useSession } from "next-auth/react";
-import Link from "next/link";
+import { FormInvite } from "../components/Forminvite";
 import Layout from "../components/layout";
 import { VerificationDomain } from "../lib/VerificationDomain";
 
@@ -7,22 +7,23 @@ export default function InviteDiscord() {
   const session = useSession();
 
   if (
-    (session.data?.user?.email &&
-      !VerificationDomain(
-        session.data?.user?.email,
-        process.env.NEXT_PUBLIC_VERIFICATION_DOMAIN || ""
-      )) ||
-    session.status == "unauthenticated"
+    session.data?.user?.email &&
+    VerificationDomain(
+      session.data?.user?.email,
+      process.env.NEXT_PUBLIC_VERIFICATION_DOMAIN || ""
+    ) &&
+    session.status == "authenticated"
   ) {
     return (
       <Layout>
-        <h1>this is not allow domain adress</h1>
+        <FormInvite />
       </Layout>
     );
   }
   return (
     <Layout>
-      <h1>NextAuth.js Example</h1>
+      <h1>デジタルハリウッド大学のGoogleアカウントでログインしてください</h1>
+      {/* <FormInvite /> */}
     </Layout>
   );
 }

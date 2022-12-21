@@ -11,7 +11,11 @@
     "build": "next build",
     "start": "next start",
     "test": "vitest",
-    "coverage": "vitest run --coverage"
+    "coverage": "vitest run --coverage",
+    "prepare": "husky install"
+  },
+  "lint-staged": {
+    "**/*": "prettier --write --ignore-unknown"
   },
   "author": "Iain Collins <me@iaincollins.com>",
   "contributors": [
@@ -23,16 +27,21 @@
     "@chakra-ui/react": "^2.4.4",
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
+    "discordeno": "^17.1.0",
     "framer-motion": "^7.10.2",
     "next": "latest",
     "next-auth": "latest",
     "nodemailer": "^6",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-hook-form": "^7.41.0"
   },
   "devDependencies": {
     "@types/node": "^17",
     "@types/react": "^18.0.15",
+    "husky": "^8.0.2",
+    "lint-staged": "^13.1.0",
+    "prettier": "2.8.1",
     "typescript": "^4",
     "vitest": "^0.26.0"
   }
