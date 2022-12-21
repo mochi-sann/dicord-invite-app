@@ -1,4 +1,5 @@
 import { useSession } from "next-auth/react";
+import AccessDenied from "../components/access-denied";
 import { FormInvite } from "../components/Forminvite";
 import Layout from "../components/layout";
 import { VerificationDomain } from "../lib/VerificationDomain";

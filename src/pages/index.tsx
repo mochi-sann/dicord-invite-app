@@ -1,15 +1,29 @@
+import { useSession } from "next-auth/react";
 import Link from "next/link";
+import { FormInvite } from "../components/Forminvite";
 import Layout from "../components/layout";
+import { VerificationDomain } from "../lib/VerificationDomain";
 
 export default function IndexPage() {
+  const session = useSession();
+
+  if (
+    session.data?.user?.email &&
+    VerificationDomain(
+      session.data?.user?.email,
+      process.env.NEXT_PUBLIC_VERIFICATION_DOMAIN || ""
+    ) &&
+    session.status == "authenticated"
+  ) {
+    return (
+      <Layout>
+        <FormInvite />
+      </Layout>
+    );
+  }
   return (
     <Layout>
-      <h1>NextAuth.js Example</h1>
-      <Link href={"/invitediscord"}>/invitediscord</Link>
-      <p>
-        This is an example site to demonstrate how to use{" "}
-        <a href="https://next-auth.js.org">NextAuth.js</a> for authentication.
-      </p>
+      <h1>大学のGoogleアカウントでログインしてください</h1>
     </Layout>
   );
 }
