@@ -2,6 +2,9 @@ import type { NextApiRequest, NextApiResponse } from "next";
 
 import { createBot, Intents, startBot } from "discordeno";
 import { CreateInvite } from "../../lib/CreateInvite";
+import { unstable_getServerSession } from "next-auth";
+import { authOptions } from "./auth/[...nextauth]";
+import { FormValues } from "../../components/Forminvite";
 export type Data = {
   url: string;
 };
@@ -13,6 +16,15 @@ export default async function handler(
 ) {
   // Get data from your database
   if (req.method == "POST") {
+    const session = await unstable_getServerSession(req, res, authOptions);
+
+    if (!session) {
+      return res.status(401);
+    }
+    const ReqBody: FormValues = req.body;
+    console.log("session", session);
+    console.log("req.body", req.body);
+
     const bot = createBot({
       token: process.env.NEXT_PUBLIC_DISCORD_TOKEN || "",
       intents: Intents.Guilds | Intents.GuildMessages | Intents.MessageContent,

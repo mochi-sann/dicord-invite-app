@@ -1,4 +1,4 @@
-import { Button, Input } from "@chakra-ui/react";
+import { Button, Input, VStack } from "@chakra-ui/react";
 import { type } from "os";
 import React from "react";
 import { useForm } from "react-hook-form";
@@ -25,27 +25,32 @@ export const FormInvite: React.FC<FormInviteProps> = (props) => {
     resolver: zodResolver(schema),
   });
 
-  const onSubmit = handleSubmit((data) => {
-    postData("/api/discord", { data: data }).then((value: Data) => {
-      console.log("value", value);
-      window.open(value.url, "_blank");
-    });
-    console.log(data);
+  const onSubmit = handleSubmit(async (data) => {
+    const DiscordUrl = await postData("/api/discord", { data: data }).then(
+      (value: Data) => {
+        console.log("value", value);
+        return value.url;
+      }
+    );
+    window.open(DiscordUrl, "_target");
   });
 
   return (
     <div>
       <form onSubmit={onSubmit}>
-        <ControlledInput
-          label="Discordのユーザー名を入力してください "
-          errors={errors}
-          isRequired
-          {...register("discordUserName")}
-        />
+        <VStack>
+          <ControlledInput
+            placeholder="Discordのユーザー名"
+            label="Discordのユーザー名を入力してください "
+            errors={errors}
+            isRequired
+            {...register("discordUserName")}
+          />
 
-        <Button type="submit" w="full">
-          join Discord{" "}
-        </Button>
+          <Button type="submit" size={"lg"} w="full">
+            join Discord{" "}
+          </Button>
+        </VStack>
       </form>
     </div>
   );

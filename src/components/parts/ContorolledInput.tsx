@@ -20,6 +20,7 @@ export type ControlledInputProps = {
   formControlProps?: Omit<FormControlProps, "isInvalid" | "isRequired">;
   formLabelProps?: FormLabelProps;
   formErrorMessageProps?: FormErrorMessageProps;
+  placeholder: string;
 } & Omit<InputProps, "isRequired">;
 
 export const ControlledInput = forwardRef<ControlledInputProps, "input">(
@@ -32,6 +33,7 @@ export const ControlledInput = forwardRef<ControlledInputProps, "input">(
       formControlProps,
       formLabelProps,
       formErrorMessageProps,
+      placeholder,
       ...rest
     }: Omit<ControlledInputProps, "ref">,
     ref
@@ -43,7 +45,7 @@ export const ControlledInput = forwardRef<ControlledInputProps, "input">(
         {...formControlProps}
       >
         <FormLabel {...formLabelProps}>{label}</FormLabel>
-        <Input name={name} {...rest} ref={ref} />
+        <Input placeholder={placeholder} name={name} {...rest} ref={ref} />
         <FormErrorMessage {...formErrorMessageProps}>
           {errors[name]?.message}
         </FormErrorMessage>
