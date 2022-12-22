@@ -5,6 +5,8 @@ import { CreateInvite } from "../../lib/CreateInvite";
 import { unstable_getServerSession } from "next-auth";
 import { authOptions } from "./auth/[...nextauth]";
 import { FormValues } from "../../components/Forminvite";
+import { GoogleSpreadsheet } from "google-spreadsheet";
+
 export type Data = {
   url: string;
 };
@@ -40,6 +42,7 @@ export default async function handler(
     const returnData: Data = {
       url: `https://discord.gg/${inveite.code}`,
     };
+
     res.status(200).json(returnData);
   }
 }
