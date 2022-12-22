@@ -7,6 +7,11 @@ import { authOptions } from "./auth/[...nextauth]";
 import { FormValues } from "../../components/Forminvite";
 import { SheetService } from "../../lib/SheetsEditer";
 import dayjs from "dayjs";
+import utc from "dayjs/plugin/utc";
+import timezone from "dayjs/plugin/timezone";
+dayjs.extend(utc);
+dayjs.extend(timezone);
+dayjs.tz.setDefault("Japan/Tokyo");
 
 export type Data = {
   url: string;
@@ -49,7 +54,7 @@ export default async function handler(
     sheet.addRows([
       {
         name: `${session.user?.name}`,
-        date: `${dayjs().toISOString()}`,
+        date: `${dayjs().format()}`,
         email: `${session.user?.email}`,
         studentId: `${session.user?.email?.split("@")[0]}`,
         discord_username: `${ReqBody.data.discordUserName}`,

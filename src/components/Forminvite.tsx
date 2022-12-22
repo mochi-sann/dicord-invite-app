@@ -20,7 +20,7 @@ export const FormInvite: React.FC<FormInviteProps> = (props) => {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isSubmitting },
   } = useForm<FormValues>({
     resolver: zodResolver(schema),
   });
@@ -48,7 +48,7 @@ export const FormInvite: React.FC<FormInviteProps> = (props) => {
             {...register("discordUserName")}
           />
 
-          <Button type="submit" size={"lg"} w="full">
+          <Button isLoading={isSubmitting} type="submit" size={"lg"} w="full">
             join Discord{" "}
           </Button>
         </VStack>
