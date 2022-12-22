@@ -5,7 +5,8 @@ import { CreateInvite } from "../../lib/CreateInvite";
 import { unstable_getServerSession } from "next-auth";
 import { authOptions } from "./auth/[...nextauth]";
 import { FormValues } from "../../components/Forminvite";
-import { GoogleSpreadsheet } from "google-spreadsheet";
+import { SheetService } from "../../lib/SheetsEditer";
+import dayjs from "dayjs";
 
 export type Data = {
   url: string;
@@ -23,7 +24,7 @@ export default async function handler(
     if (!session) {
       return res.status(401);
     }
-    const ReqBody: FormValues = req.body;
+    const ReqBody: { data: FormValues } = req.body;
     console.log("session", session);
     console.log("req.body", req.body);
 
@@ -42,6 +43,24 @@ export default async function handler(
     const returnData: Data = {
       url: `https://discord.gg/${inveite.code}`,
     };
+
+    const sheet = new SheetService();
+    await sheet.init();
+    sheet.addRows([
+      {
+        name: `${session.user?.name}`,
+        date: `${dayjs().toISOString()}`,
+        email: `${session.user?.email}`,
+        studentId: `${session.user?.email?.split("@")[0]}`,
+        discord_username: `${ReqBody.data.discordUserName}`,
+      },
+    ]);
+    // const allRows = await sheet.getRows();
+    // console.log(allRows);
+
+    // await sheet.addRows({
+    //   data: dayjs().toISOString(),
+    // });
 
     res.status(200).json(returnData);
   }

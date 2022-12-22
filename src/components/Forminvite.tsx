@@ -32,7 +32,8 @@ export const FormInvite: React.FC<FormInviteProps> = (props) => {
         return value.url;
       }
     );
-    window.open(DiscordUrl, "_target");
+    console.log(DiscordUrl, "_blank");
+    window.open(DiscordUrl, "_blank");
   });
 
   return (
