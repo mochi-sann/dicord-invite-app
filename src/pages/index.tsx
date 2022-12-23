@@ -1,8 +1,11 @@
-import { useSession } from "next-auth/react";
+import { Button } from "@chakra-ui/react";
+import { signIn, useSession } from "next-auth/react";
 import Link from "next/link";
 import { FormInvite } from "../components/Forminvite";
 import Layout from "../components/layout";
 import { VerificationDomain } from "../lib/VerificationDomain";
+import { Icon } from "@iconify/react";
+import googleIcon from "@iconify/icons-cib/google";
 
 export default function IndexPage() {
   const session = useSession();
@@ -24,6 +27,14 @@ export default function IndexPage() {
   return (
     <Layout>
       <h1>大学のGoogleアカウントでログインしてください</h1>
+      <Button
+        leftIcon={<Icon icon={googleIcon} />}
+        w={"full"}
+        colorScheme={"blue"}
+        onClick={() => signIn("google")}
+      >
+        Googleでログイン
+      </Button>
     </Layout>
   );
 }

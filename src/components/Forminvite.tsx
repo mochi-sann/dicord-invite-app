@@ -49,7 +49,7 @@ export const FormInvite: React.FC<FormInviteProps> = (props) => {
           />
 
           <Button isLoading={isSubmitting} type="submit" size={"lg"} w="full">
-            join Discord{" "}
+            Discord サーバーに参加する
           </Button>
         </VStack>
       </form>
