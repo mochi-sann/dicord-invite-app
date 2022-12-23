@@ -30,11 +30,11 @@ export default function Header() {
                 />
               )}
               <Box h="full" flex={"1"}>
-                <span className={styles.signedInText}>
-                  <small>Signed in as</small>
+                <Text>
+                  <small>ログイン中</small>
                   <br />
                   <strong>{session.user.email ?? session.user.name}</strong>
-                </span>
+                </Text>
               </Box>
               <Button
                 colorScheme={"red"}
@@ -64,31 +64,6 @@ export default function Header() {
           )}
         </Box>
       </div>
-      <nav>
-        <ul className={styles.navItems}>
-          <li className={styles.navItem}>
-            <Link href="/">Home</Link>
-          </li>
-          <li className={styles.navItem}>
-            <Link href="/client">Client</Link>
-          </li>
-          <li className={styles.navItem}>
-            <Link href="/server">Server</Link>
-          </li>
-          <li className={styles.navItem}>
-            <Link href="/protected">Protected</Link>
-          </li>
-          <li className={styles.navItem}>
-            <Link href="/api-example">API</Link>
-          </li>
-          <li className={styles.navItem}>
-            <Link href="/admin">Admin</Link>
-          </li>
-          <li className={styles.navItem}>
-            <Link href="/me">Me</Link>
-          </li>
-        </ul>
-      </nav>
     </header>
   );
 }

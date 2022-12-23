@@ -20,7 +20,7 @@ const sheetHeaderValues = [
 
 export class SheetService {
   doc: GoogleSpreadsheetType;
-  sheet: GoogleSpreadsheetWorksheetType;
+  sheet: GoogleSpreadsheetWorksheetType | any;
 
   // 複数のシートを操作したい場合はconstructorの引数としてsheetIdを渡す形にするのが良さそう
   constructor() {
