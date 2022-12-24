@@ -1,4 +1,4 @@
-import { Button, Input, VStack } from "@chakra-ui/react";
+import { Button, Input, Text, VStack } from "@chakra-ui/react";
 import { type } from "os";
 import React from "react";
 import { useForm } from "react-hook-form";
@@ -39,7 +39,7 @@ export const FormInvite: React.FC<FormInviteProps> = (props) => {
   return (
     <div>
       <form onSubmit={onSubmit}>
-        <VStack>
+        <VStack gap={4}>
           <ControlledInput
             placeholder="Discordのユーザー名"
             label="Discordのユーザー名を入力してください "
@@ -47,8 +47,18 @@ export const FormInvite: React.FC<FormInviteProps> = (props) => {
             isRequired
             {...register("discordUserName")}
           />
+          <Text>
+            ※ Googleアカウントの氏名・メールアドレス・
+            Discordのユーザー名はサークル運営のために記録されます。
+          </Text>
 
-          <Button isLoading={isSubmitting} type="submit" size={"lg"} w="full">
+          <Button
+            isLoading={isSubmitting}
+            colorScheme="blue"
+            type="submit"
+            size={"lg"}
+            w="full"
+          >
             Discord サーバーに参加する
           </Button>
         </VStack>
