@@ -28,7 +28,6 @@ export class SheetService {
     if (typeof window !== "undefined")
       throw new Error("DO NOT CALL THIS CLASS IN BROWSER!!!");
     this.doc = new GoogleSpreadsheet(sheetId);
-    console.log(JSON.stringify({ sheetId, clientEmail, privateKey }, null, 2));
   }
 
   // 本来はconstructor()の中でやりたかったがasync/awaitが使えないので仕方なく分ける

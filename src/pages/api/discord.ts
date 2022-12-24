@@ -58,7 +58,7 @@ export default async function handler(
     await sheet.addRows([
       {
         name: `${session.user?.name}`,
-        date: `${dayjs().format()}`,
+        date: `${dayjs().tz().format()}`,
         email: `${session.user?.email}`,
         studentId: `${session.user?.email?.split("@")[0]}`,
         discord_username: `${ReqBody.data.discordUserName}`,
