@@ -1,5 +1,5 @@
 export const projectData = {
-  url: "https://joinvl.mochi33.com",
+  url: "https://jooinvl.mochi33.com",
   siteName: "Join Virtual life",
   discord: {
     channelId: process.env.DISCORD_CHANNED_ID || "",
