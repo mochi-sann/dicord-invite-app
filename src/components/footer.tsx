@@ -1,28 +1,10 @@
-import Link from "next/link";
-import styles from "./footer.module.css";
-import packageJSON from "../../package.json";
-
-export default function Footer() {
+import { Box, Center, Link } from "@chakra-ui/react";
+export const Footer = () => {
   return (
-    <footer className={styles.footer}>
-      <hr />
-      <ul className={styles.navItems}>
-        <li className={styles.navItem}>
-          <a href="https://next-auth.js.org">Documentation</a>
-        </li>
-        <li className={styles.navItem}>
-          <a href="https://www.npmjs.com/package/next-auth">NPM</a>
-        </li>
-        <li className={styles.navItem}>
-          <a href="https://github.com/nextauthjs/next-auth-example">GitHub</a>
-        </li>
-        <li className={styles.navItem}>
-          <Link href="/policy">Policy</Link>
-        </li>
-        <li className={styles.navItem}>
-          <em>next-auth@{packageJSON.dependencies["next-auth"]}</em>
-        </li>
-      </ul>
-    </footer>
+    <Box p={6} as="footer" bg={"gray.100"} w="full">
+      <Center>
+        <Link href="https://twitter.com/VirtualLifeDHU">@VirtualLifeDHU</Link>
+      </Center>
+    </Box>
   );
-}
+};
