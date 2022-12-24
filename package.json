@@ -34,6 +34,7 @@
     "google-spreadsheet": "^3.3.0",
     "next": "latest",
     "next-auth": "latest",
+    "next-head-seo": "^0.1.3",
     "nodemailer": "^6",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
