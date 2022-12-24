@@ -55,7 +55,7 @@ export default async function handler(
 
     const sheet = new SheetService();
     await sheet.init();
-    sheet.addRows([
+    await sheet.addRows([
       {
         name: `${session.user?.name}`,
         date: `${dayjs().format()}`,
