@@ -1,8 +1,12 @@
-import { useSession } from "next-auth/react";
-import Link from "next/link";
+import { Button, Flex, VStack } from "@chakra-ui/react";
+import { signIn, useSession } from "next-auth/react";
+import NextHeadSeo from "next-head-seo";
 import { FormInvite } from "../components/Forminvite";
 import Layout from "../components/layout";
 import { VerificationDomain } from "../lib/VerificationDomain";
+import { Icon } from "@iconify/react";
+import googleIcon from "@iconify/icons-cib/google";
+import Image from "next/image";
 
 export default function IndexPage() {
   const session = useSession();
@@ -17,13 +21,35 @@ export default function IndexPage() {
   ) {
     return (
       <Layout>
+        <Image
+          width={1200}
+          height={675}
+          src={"/ogp.svg"}
+          alt="join Virtaul life"
+        />
         <FormInvite />
       </Layout>
     );
   }
   return (
     <Layout>
-      <h1>大学のGoogleアカウントでログインしてください</h1>
+      <Flex flexDir={"column"} gap={"2"}>
+        <Image
+          width={1200}
+          height={675}
+          src={"/ogp.svg"}
+          alt="join Virtaul life"
+        />
+        <h1>大学のGoogleアカウントでログインしてください</h1>
+        <Button
+          leftIcon={<Icon icon={googleIcon} />}
+          w={"full"}
+          colorScheme={"blue"}
+          onClick={() => signIn("google")}
+        >
+          Googleでログイン
+        </Button>
+      </Flex>
     </Layout>
   );
 }

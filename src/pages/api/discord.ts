@@ -9,6 +9,7 @@ import { SheetService } from "../../lib/SheetsEditer";
 import dayjs from "dayjs";
 import utc from "dayjs/plugin/utc";
 import timezone from "dayjs/plugin/timezone";
+import { projectData } from "../../projectData";
 dayjs.extend(utc);
 dayjs.extend(timezone);
 dayjs.tz.setDefault("Japan/Tokyo");
@@ -43,7 +44,10 @@ export default async function handler(
       },
     });
 
-    const inveite = await CreateInvite(bot, BigInt("1006191851910463612"));
+    const inveite = await CreateInvite(
+      bot,
+      BigInt(projectData.discord.channelId)
+    );
     console.log(`https://discord.gg/${inveite.code}`);
     const returnData: Data = {
       url: `https://discord.gg/${inveite.code}`,

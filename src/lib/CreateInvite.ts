@@ -5,7 +5,7 @@ export const CreateInvite = (
   channelId: bigint
 ): Promise<BaseInvite> => {
   return bot.helpers.createInvite(channelId, {
-    maxAge: 60 * 60 * 24,
+    maxAge: 60 * 60,
     maxUses: 1,
   });
 };
