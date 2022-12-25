@@ -12,7 +12,7 @@ import timezone from "dayjs/plugin/timezone";
 import { projectData } from "../../projectData";
 dayjs.extend(utc);
 dayjs.extend(timezone);
-dayjs.tz.setDefault("Japan/Tokyo");
+dayjs.tz.setDefault("Asia/Tokyo");
 
 export type Data = {
   url: string;
