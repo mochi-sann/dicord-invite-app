@@ -1,6 +1,6 @@
-import { Button, Input, Text, VStack } from "@chakra-ui/react";
+import { Button, Input, Link, Text, VStack } from "@chakra-ui/react";
 import { type } from "os";
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -17,6 +17,7 @@ export const schema = z.object({
 export type FormValues = z.infer<typeof schema>;
 
 export const FormInvite: React.FC<FormInviteProps> = (props) => {
+  const [DiscordUrlstate, setDiscordUrlstate] = useState<string | null>(null);
   const {
     register,
     handleSubmit,
@@ -32,7 +33,9 @@ export const FormInvite: React.FC<FormInviteProps> = (props) => {
         return value.url;
       }
     );
-    window.open(DiscordUrl);
+    setDiscordUrlstate(DiscordUrl);
+    window.location.href = DiscordUrl;
+    return window.open(DiscordUrl);
   });
 
   return (
@@ -60,6 +63,16 @@ export const FormInvite: React.FC<FormInviteProps> = (props) => {
           >
             Discord サーバーに参加する
           </Button>
+          {DiscordUrlstate && (
+            <Link
+              href={DiscordUrlstate}
+              textColor={"blue.500"}
+              textDecoration={"underline"}
+              isExternal
+            >
+              ページが開かない場合はこのリンクをクリックしてください
+            </Link>
+          )}
         </VStack>
       </form>
     </div>
