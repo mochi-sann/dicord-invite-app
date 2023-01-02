@@ -31,6 +31,10 @@ export default async function handler(
       return res.status(401);
     }
     const ReqBody: { data: FormValues } = req.body;
+
+    if (!(ReqBody.data.discordUserName.length > 0)) {
+      return res.status(401);
+    }
     console.log("session", session);
     console.log("req.body", req.body);
 

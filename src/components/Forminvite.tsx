@@ -7,11 +7,19 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { postData } from "../lib/postData";
 import { Data } from "../pages/api/discord";
 import { ControlledInput } from "./parts/ContorolledInput";
+import NextLink from "next/link";
 
 export type FormInviteProps = {};
 
 export const schema = z.object({
-  discordUserName: z.string(),
+  discordUserName: z
+    .string({
+      description: "Discord のユーザーネームです",
+      required_error: "必須項目です",
+    })
+    .regex(/.+?#[0-9]{4}/, {
+      message: "Discordのユーザーネームを入力してください(例) name#6391",
+    }),
 });
 
 export type FormValues = z.infer<typeof schema>;
@@ -43,10 +51,11 @@ export const FormInvite: React.FC<FormInviteProps> = (props) => {
       <form onSubmit={onSubmit}>
         <VStack gap={4}>
           <ControlledInput
+            label="Discordのユーザー名"
             placeholder="Discordのユーザー名"
-            label="Discordのユーザー名を入力してください "
+            helpText="(例) name#1234"
             errors={errors}
-            isRequired
+            isRequired={true}
             {...register("discordUserName")}
           />
           <Text>
@@ -63,6 +72,15 @@ export const FormInvite: React.FC<FormInviteProps> = (props) => {
           >
             Discord サーバーに参加する
           </Button>
+          <NextLink href={"/policy"} passHref>
+            <Link
+              textColor={"blue.500"}
+              textDecoration={"underline"}
+              isExternal
+            >
+              利用規約
+            </Link>
+          </NextLink>
           {DiscordUrlstate && (
             <Link
               href={DiscordUrlstate}
