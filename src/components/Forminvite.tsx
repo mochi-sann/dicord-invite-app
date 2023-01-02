@@ -32,7 +32,6 @@ export const FormInvite: React.FC<FormInviteProps> = (props) => {
     formState: { errors, isSubmitting },
   } = useForm<FormValues>({
     resolver: zodResolver(schema),
-    mode: "onChange",
   });
 
   const onSubmit = handleSubmit(async (data) => {
@@ -53,7 +52,8 @@ export const FormInvite: React.FC<FormInviteProps> = (props) => {
         <VStack gap={4}>
           <ControlledInput
             label="Discordのユーザー名"
-            placeholder="(例)name#1234"
+            placeholder="Discordのユーザー名"
+            helpText="(例) name#1234"
             errors={errors}
             isRequired={true}
             {...register("discordUserName")}
