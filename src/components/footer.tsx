@@ -5,6 +5,9 @@ export const Footer = () => {
       <Center>
         <Link href="https://twitter.com/VirtualLifeDHU">@VirtualLifeDHU</Link>
       </Center>
+      <Center>
+        <Link href="https://twitter.com/mochi33i">@mochi33i</Link>
+      </Center>
     </Box>
   );
 };
