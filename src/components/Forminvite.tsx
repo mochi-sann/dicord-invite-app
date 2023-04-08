@@ -72,15 +72,15 @@ export const FormInvite: React.FC<FormInviteProps> = (props) => {
           >
             Discord サーバーに参加する
           </Button>
-          <NextLink href={"/policy"} passHref>
-            <Link
-              textColor={"blue.500"}
-              textDecoration={"underline"}
-              isExternal
-            >
-              利用規約
-            </Link>
-          </NextLink>
+          {/* <NextLink href={"/policy"} passHref> */}
+          {/*   <Link */}
+          {/*     textColor={"blue.500"} */}
+          {/*     textDecoration={"underline"} */}
+          {/*     isExternal */}
+          {/*   > */}
+          {/*     利用規約 */}
+          {/*   </Link> */}
+          {/* </NextLink> */}
           {DiscordUrlstate && (
             <Link
               href={DiscordUrlstate}
