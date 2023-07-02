@@ -12,14 +12,10 @@ import NextLink from "next/link";
 export type FormInviteProps = {};
 
 export const schema = z.object({
-  discordUserName: z
-    .string({
-      description: "Discord のユーザーネームです",
-      required_error: "必須項目です",
-    })
-    .regex(/.+?#[0-9]{4}/, {
-      message: "Discordのユーザーネームを入力してください(例) name#6391",
-    }),
+  discordUserName: z.string({
+    description: "Discord のユーザーネームです",
+    required_error: "必須項目です",
+  }),
 });
 
 export type FormValues = z.infer<typeof schema>;
@@ -53,7 +49,7 @@ export const FormInvite: React.FC<FormInviteProps> = (props) => {
           <ControlledInput
             label="Discordのユーザー名"
             placeholder="Discordのユーザー名"
-            helpText="(例) name#1234"
+            helpText="(例) name"
             errors={errors}
             isRequired={true}
             {...register("discordUserName")}
@@ -72,15 +68,6 @@ export const FormInvite: React.FC<FormInviteProps> = (props) => {
           >
             Discord サーバーに参加する
           </Button>
-          {/* <NextLink href={"/policy"} passHref> */}
-          {/*   <Link */}
-          {/*     textColor={"blue.500"} */}
-          {/*     textDecoration={"underline"} */}
-          {/*     isExternal */}
-          {/*   > */}
-          {/*     利用規約 */}
-          {/*   </Link> */}
-          {/* </NextLink> */}
           {DiscordUrlstate && (
             <Link
               href={DiscordUrlstate}
