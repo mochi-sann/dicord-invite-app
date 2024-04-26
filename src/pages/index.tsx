@@ -40,7 +40,16 @@ export default function IndexPage() {
           src={"/ogp.svg"}
           alt="join Virtaul life"
         />
-        <h1>大学のGoogleアカウントでログインしてください</h1>
+        <h1>
+          大学のGoogleアカウント
+          {process.env.NEXT_PUBLIC_VERIFICATION_DOMAIN && (
+            <>
+              （{process.env.NEXT_PUBLIC_VERIFICATION_DOMAIN}{" "}
+              で終わるメールアドレス）
+            </>
+          )}
+          でログインしてください
+        </h1>
         <Button
           leftIcon={<Icon icon={googleIcon} />}
           w={"full"}
